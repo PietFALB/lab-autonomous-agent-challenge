@@ -12,7 +12,7 @@ If the OpenAI output arrives wrapped in ```json fences, has a missing key, or gi
 
 3. The alert-branch write and the alert are not atomic, and the destination schema is strict.
 
-Route without delivery: the record gets route = alert before Slack or email fires. If the alert fails, the database claims someone was alerted when nobody was. Add a delivery status field, or write the route after the alert succeeds.
+Route without delivery: the record gets route = alert before Notion or email fires. If the alert fails, the database claims someone was alerted when nobody was. Add a delivery status field, or write the route after the alert succeeds.
 Strict Notion and Airtable fields:
 Select options such as alert/archive and any category values must already exist, unless typecast is on in Airtable.
 Dates must be ISO format.

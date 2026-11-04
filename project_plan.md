@@ -49,15 +49,29 @@ Yes. It runs daily on a schedule with nobody starting it. That brings in the req
 p.s. The brief says the use case should need “agent capabilities, not just simple automation”. Your answer to question 3 admits it’s a pipeline. Your justification is that the core step is judgement: deciding whether an item matters to this specific client, which a keyword filter can’t do. 
 
 ### 2.2 Stack
-- Core LLM: 
-- RAG components:
-- Agent framework:
-- Orchestration:
-- Tools/integrations:
+- Core LLM: GPT-5.4, could have probably ran a 'weaker' model to save cost
+- RAG components: None in MVP, each item fits in the prompt, possible for a v2
+- Agent framework: n8n's HTTP Request to OpenAI with a structured JSON output, no LangChain/LangGraph. It runs well in n8n.
+- Orchestration: n8n (self-hosted), Schedule Trigger, error workflow
+- Tools/integrations: RSS Read (EDPB feed), OpenAI API, Notion database (Items), Notion page (Regulatory alerts)
 
 ### 2.3 Justification
-| Choice | Why | Alternative considered | Trade-off |
-| --- | --- | --- | --- |
+Choice          Why                          Alternative considered          Trade-off
+n8n             good way to build workflow   Python script / LangChain
+
+GPT 5.4     ,   Works well                  Smaller model (for mvp)         Bigger model fr possible v2
+JSON mode   
+
+No RAG in MVP   Not necessary, fits prompt  Vector DB   q                   -
+
+
+Fixed pipeline,  n8n pipeline suits the usecase LangGraph state machine     Latency & cost (tokens)
+no LangGraph
+
+Notion database works with the assignment       AirTable                    -
+
+RSS feed        -                             Scraping the website          -
+
 
 ## 3. MVP Scope
 
